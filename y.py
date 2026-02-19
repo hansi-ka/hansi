@@ -1,15 +1,20 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2867
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
 
-\f0\fs24 \cf0 mport numpy as np\
-import matplotlib.pyplot as plt\
-import pandas as pd\
-from sklearn.ensemble import RandomForestRegressor\
-RandomForestRegModel = RandomForestRegressor()\
-RandomForestRegModel.fit(X,y)\
-X_marks=[[70]]\
-print(RandomForestRegModel.predict(X_marks))}
+# Sample dataset (Marks vs Salary example)
+X = np.array([[30], [40], [50], [60], [70], [80], [90]])
+y = np.array([20000, 30000, 40000, 50000, 60000, 70000, 80000])
+
+# Create model
+RandomForestRegModel = RandomForestRegressor(n_estimators=100, random_state=42)
+
+# Train model
+RandomForestRegModel.fit(X, y)
+
+# Predict for new value
+X_marks = [[70]]
+prediction = RandomForestRegModel.predict(X_marks)
+
+print("Predicted value:", prediction[0])
